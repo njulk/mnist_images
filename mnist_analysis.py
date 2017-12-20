@@ -5,7 +5,7 @@ import os
 
 def createFile(path):
 	for i in xrange(10):
-		os.mkdir(path + '\\' + str(i))
+		os.mkdir(path + '/' + str(i))
 
 
 def read_image(idx_img, idx_label, path_img, path_label):
@@ -36,7 +36,7 @@ def read_image(idx_img, idx_label, path_img, path_label):
 				index_img += struct.calcsize('>B')
 		label_item = int(struct.unpack_from('>B', buf_label, index_label)[0])
 		index_label += struct.calcsize('>B')
-		image.save(path_img + '\\' + str(label_item) + '\\' + str(label_item )+ '_' + str(list_file[label_item]) + '.png')
+		image.save(path_img + '/' + str(label_item) + '/' + str(label_item )+ '_' + str(list_file[label_item]) + '.png')
 		wd_label.write(str(label_item) + '_' + str(list_file[label_item]) + "     " + str(label_item)+'\n')
 		list_file[label_item] += 1
 	wd_label.close()
@@ -59,7 +59,7 @@ def read_label(rlabelidx, wlabeltxt):
 
 if __name__ == '__main__':
 	# read_image('C:\Users\Administrator\Desktop\caffe\Mnist-image\mytrain\\train-images.idx3-ubyte')
-	read_image('C:\Users\Administrator\Desktop\caffe\Mnist-image\mytrain\\train-images.idx3-ubyte',
-			   'C:\Users\Administrator\Desktop\caffe\Mnist-image\mytrain\\train-labels.idx1-ubyte',
-			   'C:\Users\Administrator\Desktop\caffe\Mnist-image\mytrain\images',
-			   'C:\Users\Administrator\Desktop\caffe\Mnist-image\mytrain\label\mytrain_label.txt')
+	read_image('/home/istin/njulk/caffe/caffe-master/examples/myfile/mnist_images/train-images.idx3-ubyte',
+			   '/home/istin/njulk/caffe/caffe-master/examples/myfile/mnist_images/train-labels.idx1-ubyte',
+			   '/home/istin/njulk/caffe/caffe-master/examples/myfile/mnist_images/train_file/images',
+			   '/home/istin/njulk/caffe/caffe-master/examples/myfile/mnist_images/train_file/label/mytrain_label.txt')
